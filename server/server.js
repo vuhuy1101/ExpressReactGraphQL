@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require('cors');
-const PORT = 6969;
+const PORT = process.env.HTTP_PORT || 6969;
 // In real life, this should be where you handle and get data from your database
 const { graphqlHTTP } = require('express-graphql');
 const schema = require("./Schemas");
@@ -15,5 +15,5 @@ app.use('/graphql', graphqlHTTP({
 }))
 
 app.listen(PORT, () => {
-	console.log("Server running");
+	console.log(`Server listening at port ${PORT}.`);
 })
